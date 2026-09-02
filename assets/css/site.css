@@ -746,7 +746,37 @@ main[id] {
 }
 
 .medico.apagado {
-  opacity: 0.28;
+  opacity: 0.22;
+  filter: saturate(0.4);
+}
+
+/* Ao escolher uma especialidade, quem atende salta a frente. */
+.medico.imantado {
+  transform: translateY(-8px);
+  background: rgba(151, 176, 44, 0.1);
+  border-color: var(--verde);
+  box-shadow: 0 0 0 1px var(--verde), 0 22px 44px -24px rgba(0, 0, 0, 0.6);
+}
+
+.medico.imantado .medico__foto {
+  box-shadow: 0 0 0 3px var(--verde);
+}
+
+/* Um unico pulso no card, so para o olho encontrar onde a lista parou. */
+.medico.imantado.pulsa {
+  animation: ima 0.85s var(--curva);
+}
+
+@keyframes ima {
+  0% {
+    box-shadow: 0 0 0 1px var(--verde), 0 0 0 0 rgba(151, 176, 44, 0.55);
+  }
+  60% {
+    box-shadow: 0 0 0 1px var(--verde), 0 0 0 14px rgba(151, 176, 44, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 1px var(--verde), 0 22px 44px -24px rgba(0, 0, 0, 0.6);
+  }
 }
 
 .medico__foto {
@@ -957,26 +987,7 @@ main[id] {
   box-shadow: 0 12px 26px -18px rgba(1, 33, 45, 0.5);
 }
 
-.aviso {
-  display: flex;
-  gap: 0.7rem;
-  align-items: flex-start;
-  margin-top: 1.6rem;
-  padding: 1.05rem 1.25rem;
-  background: rgba(151, 176, 44, 0.11);
-  border-left: 3px solid var(--verde);
-  border-radius: 0 10px 10px 0;
-  font-size: 0.93rem;
-  color: var(--tinta-70);
-}
 
-.aviso svg {
-  width: 20px;
-  height: 20px;
-  flex: none;
-  color: var(--verde);
-  margin-top: 0.1rem;
-}
 
 /* --- Como chegar ------------------------------------------------ */
 
@@ -1421,15 +1432,37 @@ main[id] {
     --w: min(1240px, 100% - 2.2rem);
   }
 
-  .hero__selos {
-    gap: 1.1rem 1.9rem;
-  }
-
+  /* Navegacao e contato lado a lado: encurta bastante o rodape. */
   .rodape__grade {
-    grid-template-columns: 1fr;
-    gap: 2rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.8rem 1.4rem;
   }
 
+  /* A marca e o endereco atravessam as duas colunas; as duas listas
+     dividem a linha de baixo. */
+  .rodape__grade > div:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .rodape__sobre {
+    font-size: 0.86rem;
+    margin-top: 0.9rem;
+  }
+
+  .rodape ul {
+    gap: 0.55rem;
+  }
+
+  /* Os dois botoes do hero na mesma largura, e larga o bastante pro toque. */
+  .hero__acoes {
+    display: grid;
+    gap: 0.7rem;
+  }
+
+  .hero__acoes .btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

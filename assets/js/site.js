@@ -82,6 +82,7 @@
   var limpar = doc.getElementById("limpar");
   var fios = doc.getElementById("fios");
   var mapa = doc.querySelector(".mapa");
+  var trilhoEquipe = doc.getElementById("trilho");
   var areaAtiva = null;
 
   /* --- Fios entre cada nome e a regiao do corpo ------------------ */
@@ -163,10 +164,15 @@
     });
     acenderFio(area);
 
+    var atendem = [];
+
     medicos.forEach(function (m) {
       var areas = (m.dataset.areas || "").split(" ");
-      var serve = !area || areas.indexOf(area) !== -1;
-      m.classList.toggle("apagado", !serve);
+      var serve = !!area && areas.indexOf(area) !== -1;
+      m.classList.toggle("apagado", !!area && !serve);
+      m.classList.toggle("imantado", serve);
+      m.classList.remove("pulsa");
+      if (serve) atendem.push(m);
     });
 
     if (!area) {
@@ -175,9 +181,28 @@
       return;
     }
 
-    var quantos = medicos.filter(function (m) {
-      return !m.classList.contains("apagado");
-    }).length;
+    /* Traz o primeiro que atende para dentro da vista do trilho e da um
+       pulso, senao o card pode estar fora da area visivel do carrossel. */
+    if (atendem.length && trilhoEquipe) {
+      var alvo = atendem[0];
+      var caixa = alvo.getBoundingClientRect();
+      var pista = trilhoEquipe.getBoundingClientRect();
+      var destino =
+        trilhoEquipe.scrollLeft +
+        (caixa.left - pista.left) -
+        (pista.width - caixa.width) / 2;
+
+      trilhoEquipe.scrollTo({
+        left: Math.max(0, destino),
+        behavior: calmo ? "auto" : "smooth"
+      });
+
+      requestAnimationFrame(function () {
+        alvo.classList.add("pulsa");
+      });
+    }
+
+    var quantos = atendem.length;
 
     if (aviso) {
       aviso.textContent =

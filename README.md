@@ -35,6 +35,9 @@ npx serve -l 8863 .
   precisa ser aplicado à outra, senão os pontos saem de cima do corpo.
 - **A ordem dos nomes em cada coluna do mapa segue a altura do ponto no corpo.**
   Fora dessa ordem, os fios se cruzam.
+- **Ao filtrar por especialidade, quem atende é "imantado"**: ganha borda
+  verde, um pulso e o carrossel rola até ele. Sem isso o card podia estar
+  fora da área visível do trilho e o clique parecia não ter feito nada.
 - **Trocar o pictograma por uma foto não quebra o mapa**: basta trocar o `src`
   de `.mapa__figura` e reconferir os oito percentuais em `#alvos`.
 
