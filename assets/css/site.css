@@ -141,6 +141,23 @@ p {
   white-space: nowrap;
 }
 
+/* Ao receber foco pelo teclado ele sai do esconderijo. */
+.oculto-visual:focus-visible {
+  position: fixed;
+  top: 0.7rem;
+  left: 0.7rem;
+  z-index: 200;
+  width: auto;
+  height: auto;
+  padding: 0.8rem 1.2rem;
+  clip-path: none;
+  border-radius: 999px;
+  background: var(--verde);
+  color: var(--tinta);
+  font-weight: 600;
+  text-decoration: none;
+}
+
 /* --- Botoes ---------------------------------------------------- */
 
 .btn {
@@ -273,7 +290,7 @@ p {
 }
 
 .marca__linha {
-  font-size: 0.635rem;
+  font-size: 0.72rem;
   letter-spacing: 0.085em;
   text-transform: uppercase;
   color: var(--tinta-45);
@@ -581,7 +598,8 @@ main[id] {
   gap: 0.65rem;
   background: transparent;
   border: 0;
-  padding: 0.5rem 0.2rem;
+  padding: 0.7rem 0.2rem;
+  min-height: 44px;
   cursor: pointer;
   font: 500 0.985rem/1.25 var(--sans);
   color: var(--tinta-70);
