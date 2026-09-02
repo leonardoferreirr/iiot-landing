@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
+  <!-- Trama da marca: o par de elipses entrelacadas do monograma, alternado.
+       Nenhuma forma cruza a borda do tile, entao ele repete sem emenda. -->
+  <g fill="none" stroke="#00495e" stroke-width="1.6">
+    <g transform="translate(40 40)">
+      <ellipse rx="17" ry="12.5" transform="rotate(-34)"/>
+      <ellipse rx="17" ry="12.5" transform="rotate(56)"/>
+    </g>
+    <g transform="translate(120 120)">
+      <ellipse rx="17" ry="12.5" transform="rotate(-34)"/>
+      <ellipse rx="17" ry="12.5" transform="rotate(56)"/>
+    </g>
+  </g>
+</svg>
