@@ -18,7 +18,8 @@ npx serve -l 8863 .
 - `assets/img/figura.svg` — pictograma do mapa de especialidades
 - `assets/img/trama.svg` — trama de fundo, tile fechado
 - `assets/img/equipe/` — retratos do corpo clínico
-- `assets/fonts/` — Fraunces e Inter Tight, servidas localmente
+- `assets/fonts/` — Fraunces e Inter Tight, servidas localmente e reduzidas
+  ao que a página usa (ver decisões)
 
 ## Decisões que não são óbvias no código
 
@@ -38,6 +39,12 @@ npx serve -l 8863 .
 - **Ao filtrar por especialidade, quem atende é "imantado"**: ganha borda
   verde, um pulso e o carrossel rola até ele. Sem isso o card podia estar
   fora da área visível do trilho e o clique parecia não ter feito nada.
+- **As fontes foram cortadas ao que a página usa.** A Fraunces é variável e
+  vinha com todos os eixos: como o site só usa o peso 600, ela foi
+  instanciada nesse peso e caiu de 65 KB para 16 KB. A Inter Tight continua
+  variável, porque os pesos 400, 500 e 600 são todos usados, mas foi
+  reduzida ao subconjunto latino: 44 KB para 27 KB. Juntas, 66 KB a menos
+  disputando banda com a foto do hero.
 - **Trocar o pictograma por uma foto não quebra o mapa**: basta trocar o `src`
   de `.mapa__figura` e reconferir os oito percentuais em `#alvos`.
 
