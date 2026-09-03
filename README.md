@@ -48,11 +48,18 @@ npx serve -l 8863 .
 - **Trocar o pictograma por uma foto não quebra o mapa**: basta trocar o `src`
   de `.mapa__figura` e reconferir os oito percentuais em `#alvos`.
 
+## Corpo clínico
+
+Os nove médicos vieram do PDF "Nomes e currículos dos doutores" (03/09/2026),
+com CRM e RQE. As fotos vieram da pasta "Doutores" na mesma data, recortadas
+em quadrado a partir do terço superior, que é onde fica o rosto em retrato.
+
+O Dr. Franco André Correa Martins, que constava no site antigo, **não está na
+lista atual** e foi removido junto com a foto. Se ele voltar ao quadro, é só
+recolocar o card no mesmo padrão dos outros.
+
 ## Pendências do cliente
 
-- Dois médicos: o briefing informa nove, o material trazia sete.
-- Nenhum médico de ortopedia pediátrica, embora a especialidade esteja no
-  briefing e sustente metade da promessa do hero.
 - Logos dos convênios (hoje o carrossel roda com os nomes em texto).
 - Horário de atendimento e número do WhatsApp.
 - Mapa interno do percurso da entrada do UMC até a Sala 43.

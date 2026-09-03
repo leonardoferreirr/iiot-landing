@@ -771,8 +771,8 @@ main[id] {
 }
 
 .medico__foto {
-  width: 112px;
-  height: 112px;
+  width: 140px;
+  height: 140px;
   margin: 0 auto 1.05rem;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.9);
