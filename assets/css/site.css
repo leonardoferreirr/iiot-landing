@@ -849,7 +849,7 @@ main[id] {
   display: grid;
   grid-template-columns: 0.92fr 1.08fr;
   gap: clamp(2rem, 1rem + 4vw, 4.5rem);
-  align-items: center;
+  align-items: stretch;
 }
 
 .sobre__texto p + p {
@@ -883,11 +883,16 @@ main[id] {
   margin-top: 0.15rem;
 }
 
-.sobre__figura {
+.sobre__lado {
   position: relative;
+  min-height: clamp(320px, 34vw, 460px);
+}
+
+.sobre__figura {
+  position: absolute;
+  inset: 0;
   border-radius: var(--raio);
   overflow: hidden;
-  aspect-ratio: 5 / 6;
   background: var(--teal-fundo);
 }
 
@@ -1332,9 +1337,12 @@ main[id] {
   }
 
 
-  .sobre__figura {
-    max-width: 460px;
+  .sobre__lado {
+    max-width: 520px;
     margin-inline: auto;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    min-height: 0;
   }
 
   .rodape__grade {
