@@ -58,11 +58,18 @@ O Dr. Franco André Correa Martins, que constava no site antigo, **não está na
 lista atual** e foi removido junto com a foto. Se ele voltar ao quadro, é só
 recolocar o card no mesmo padrão dos outros.
 
+## Convênios
+
+As dez logos foram normalizadas num canvas comum (320x130, fundo branco) antes
+de entrar no site: cada arquivo vinha com proporção e margem diferentes, de
+1:1 a 3,9:1, e sem isso umas ficariam gigantes e outras minúsculas na mesma
+faixa. Com a caixa igual, o CSS só precisa de `object-fit: contain`.
+
+Fusex Uberlândia e Araguari usam a mesma marca e viraram um card só.
+
 ## Pendências do cliente
 
-- Logos dos convênios (hoje o carrossel roda com os nomes em texto).
 - Horário de atendimento e número do WhatsApp.
 - Mapa interno do percurso da entrada do UMC até a Sala 43.
-- Foto da entrada em alta resolução: a atual tem 680 px de origem.
 - Três artigos de conteúdo. A seção está pronta e oculta por `hidden` no
   `index.html`; basta remover o atributo para reativá-la.
