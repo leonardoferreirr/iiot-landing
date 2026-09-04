@@ -36,7 +36,7 @@
   "medicalSpecialty": "Orthopedic",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Rua Rafael Marino Neto, 600, Sala 43 — Complexo UMC",
+    "streetAddress": "Rua Rafael Marino Neto, 600, Térreo, Sala 43 — Complexo UMC",
     "addressLocality": "Uberlândia",
     "addressRegion": "MG",
     "addressCountry": "BR"
@@ -93,13 +93,13 @@
         <h1>Atendimento ortopédico especializado para <em>todas as fases</em> da vida</h1>
 
         <p class="hero__texto">
-          Seja qual for a sua dor, no Instituto Integrado de Ortopedia e Traumatologia
+          Seja qual for a sua dor, no <span class="inteiro">Instituto Integrado de Ortopedia e Traumatologia</span>
           você encontra um especialista para a sua necessidade, ou para a necessidade do seu filho.
         </p>
         <p class="hero__texto">
           Localizado no <strong>Complexo UMC</strong>, em Uberlândia, o IIOT reúne
-          <strong>nove médicos</strong> com atuação em diferentes áreas da ortopedia e
-          traumatologia, com praticidade, segurança e fácil acesso ao agendamento.
+          <strong>nove médicos</strong> com atuação em diferentes áreas da
+          <strong>ortopedia e traumatologia</strong>, com praticidade, segurança e fácil acesso ao agendamento.
         </p>
 
         <div class="hero__acoes">
@@ -153,15 +153,24 @@
           <div class="mapa__alvos" id="alvos" aria-hidden="true">
             <!-- Todas as regiões saem do adulto; a criança recebe só a pediatria.
                  Em cada coluna a ordem dos nomes segue a altura do ponto,
-                 senão os fios se cruzam. -->
-            <span class="alvo" data-area="ombro"      style="left:13%;top:29%"></span>
-            <span class="alvo" data-area="coluna"     style="left:26%;top:36%"></span>
+                 senão os fios se cruzam. Cada região fica do lado da própria
+                 coluna: se um ponto da coluna da direita caísse na metade
+                 esquerda do corpo, o fio atravessaria a figura inteira.
+
+                 As coordenadas saem da anatomia medida no desenho, não do
+                 olho. Rasterizando a figura e lendo os blocos de pixel por
+                 linha: cabeça 1-21%, ombros 30-34%, tronco x 18-43%, braço
+                 esquerdo x 5-14%, braço direito x 45-59%, as pernas se
+                 separam em 64% (esquerda 18-29%, direita 32-43%) e vão até
+                 98%; a criança ocupa x 67-87%. -->
+            <span class="alvo" data-area="ombro"      style="left:13%;top:33%"></span>
+            <span class="alvo" data-area="coluna"     style="left:30%;top:42%"></span>
             <span class="alvo" data-area="mao"        style="left:54%;top:53%"></span>
-            <span class="alvo" data-area="quadril"    style="left:38%;top:60%"></span>
-            <span class="alvo" data-area="tumores"    style="left:38%;top:69%"></span>
-            <span class="alvo" data-area="pediatria"  style="left:78%;top:72%"></span>
+            <span class="alvo" data-area="quadril"    style="left:36%;top:62%"></span>
+            <span class="alvo" data-area="tumores"    style="left:38%;top:74%"></span>
+            <span class="alvo" data-area="pediatria"  style="left:77%;top:76%"></span>
             <span class="alvo" data-area="joelho"     style="left:23%;top:80%"></span>
-            <span class="alvo" data-area="pe"         style="left:23%;top:96%"></span>
+            <span class="alvo" data-area="pe"         style="left:23%;top:95%"></span>
           </div>
         </div>
 
@@ -291,7 +300,7 @@
           <h2>Quem somos</h2>
         </div>
         <p>
-          O instituto nasceu da iniciativa de um grupo de médicos ortopedistas que compartilhava
+          O Instituto nasceu da iniciativa de um grupo de médicos ortopedistas que compartilhava
           o propósito de atuar de forma integrada e colaborativa, reunindo diferentes
           subespecialidades para oferecer um atendimento mais completo, humanizado e direcionado
           às necessidades de cada paciente.
@@ -399,7 +408,7 @@
               </svg>
               <div>
                 <b>Endereço</b>
-                <span>Complexo UMC — Rua Rafael Marino Neto, 600, Sala 43<br>
+                <span>Complexo UMC — Rua Rafael Marino Neto, 600, Térreo, Sala 43<br>
                       Jardim Karaíba, Uberlândia (MG)</span>
               </div>
             </li>
@@ -421,7 +430,7 @@
               </svg>
               <div>
                 <b>Horário de atendimento</b>
-                <span>[A PREENCHER] dias e horários da recepção</span>
+                <span>Segunda a sexta, das 8h às 18h30</span>
               </div>
             </li>
             <li>
@@ -431,7 +440,7 @@
               </svg>
               <div>
                 <b>WhatsApp da recepção</b>
-                <span>[A PREENCHER] número com DDD</span>
+                <span><a href="https://wa.me/553432552777">(34) 3255-2777</a></span>
               </div>
             </li>
           </ul>
@@ -551,7 +560,7 @@
         </span>
         <p class="rodape__sobre">
           Instituto Integrado de Ortopedia e Traumatologia do Triângulo Mineiro.
-          Complexo UMC, Rua Rafael Marino Neto, 600, Sala 43, Jardim Karaíba, Uberlândia (MG).
+          Complexo UMC, Rua Rafael Marino Neto, 600, Térreo, Sala 43, Jardim Karaíba, Uberlândia (MG).
         </p>
       </div>
 
@@ -583,7 +592,7 @@
   </div>
 </footer>
 
-<a class="zap" id="zap" href="#chegar" aria-label="Falar no WhatsApp">
+<a class="zap" id="zap" href="https://wa.me/553432552777" aria-label="Falar no WhatsApp">
   <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
     <path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1a8 8 0 0 1-4-3.5c-.2-.3 0-.5.1-.7l.5-.7c.2-.2.2-.4.3-.6v-.5c0-.2-.7-1.6-.9-2.2-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.7s1.2 3.2 1.4 3.4c.2.2 2.4 3.7 5.8 5 2.9 1.1 3.4.9 4.1.9.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4z"/>
     <path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2z"/>

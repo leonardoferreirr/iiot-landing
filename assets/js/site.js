@@ -166,40 +166,25 @@
 
     var atendem = [];
 
+    /* Esconde quem nao atende, em vez de apenas apagar. Com nove cards num
+       trilho que rola, "apagado" obrigava o visitante a procurar os certos no
+       meio dos errados, e quem atendia em dupla aparecia separado: era comum
+       ver so um dos dois. Escondendo, os que sobram ficam lado a lado. */
     medicos.forEach(function (m) {
       var areas = (m.dataset.areas || "").split(" ");
-      var serve = !!area && areas.indexOf(area) !== -1;
-      m.classList.toggle("apagado", !!area && !serve);
-      m.classList.toggle("imantado", serve);
-      m.classList.remove("pulsa");
-      if (serve) atendem.push(m);
+      var serve = !area || areas.indexOf(area) !== -1;
+      m.hidden = !serve;
+      if (area && serve) atendem.push(m);
     });
+
+    /* A lista encolheu: quem estava rolado para o meio ficaria olhando para
+       o vazio depois do ultimo card. */
+    if (trilhoEquipe) trilhoEquipe.scrollTo({ left: 0, behavior: "auto" });
 
     if (!area) {
       if (aviso) aviso.textContent = "Mostrando todo o corpo clínico.";
       if (limpar) limpar.hidden = true;
       return;
-    }
-
-    /* Traz o primeiro que atende para dentro da vista do trilho e da um
-       pulso, senao o card pode estar fora da area visivel do carrossel. */
-    if (atendem.length && trilhoEquipe) {
-      var alvo = atendem[0];
-      var caixa = alvo.getBoundingClientRect();
-      var pista = trilhoEquipe.getBoundingClientRect();
-      var destino =
-        trilhoEquipe.scrollLeft +
-        (caixa.left - pista.left) -
-        (pista.width - caixa.width) / 2;
-
-      trilhoEquipe.scrollTo({
-        left: Math.max(0, destino),
-        behavior: calmo ? "auto" : "smooth"
-      });
-
-      requestAnimationFrame(function () {
-        alvo.classList.add("pulsa");
-      });
     }
 
     var quantos = atendem.length;

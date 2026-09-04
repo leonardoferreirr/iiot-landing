@@ -419,10 +419,17 @@ p {
   position: relative;
 }
 
+/* Justificado com hifenizacao ligada. Justificar sem hifen abre rios de
+   espaco entre as palavras, e em portugues, que tem palavra longa, o estrago
+   e maior. A ultima linha continua alinhada a esquerda. */
 .hero__texto {
   font-size: clamp(1.05rem, 1rem + 0.35vw, 1.24rem);
   color: rgba(255, 255, 255, 0.82);
   max-width: 36rem;
+  text-align: justify;
+  text-align-last: left;
+  hyphens: auto;
+  -webkit-hyphens: auto;
 }
 
 .hero__texto + .hero__texto {
@@ -432,6 +439,15 @@ p {
 .hero__texto strong {
   color: #fff;
   font-weight: 500;
+}
+
+/* Hifen no meio do nome do instituto ("Trau-matologia") empobrece a marca.
+   A hifenizacao continua ligada no resto do paragrafo, que e onde ela evita
+   os rios de espaco do texto justificado. */
+.hero__texto strong,
+.inteiro {
+  hyphens: none;
+  -webkit-hyphens: none;
 }
 
 .hero__acoes {
@@ -736,40 +752,6 @@ main[id] {
   border-color: rgba(151, 176, 44, 0.5);
 }
 
-.medico.apagado {
-  opacity: 0.22;
-  filter: saturate(0.4);
-}
-
-/* Ao escolher uma especialidade, quem atende salta a frente. */
-.medico.imantado {
-  transform: translateY(-8px);
-  background: rgba(151, 176, 44, 0.1);
-  border-color: var(--verde);
-  box-shadow: 0 0 0 1px var(--verde), 0 22px 44px -24px rgba(0, 0, 0, 0.6);
-}
-
-.medico.imantado .medico__foto {
-  box-shadow: 0 0 0 3px var(--verde);
-}
-
-/* Um unico pulso no card, so para o olho encontrar onde a lista parou. */
-.medico.imantado.pulsa {
-  animation: ima 0.85s var(--curva);
-}
-
-@keyframes ima {
-  0% {
-    box-shadow: 0 0 0 1px var(--verde), 0 0 0 0 rgba(151, 176, 44, 0.55);
-  }
-  60% {
-    box-shadow: 0 0 0 1px var(--verde), 0 0 0 14px rgba(151, 176, 44, 0);
-  }
-  100% {
-    box-shadow: 0 0 0 1px var(--verde), 0 22px 44px -24px rgba(0, 0, 0, 0.6);
-  }
-}
-
 .medico__foto {
   width: 140px;
   height: 140px;
@@ -858,6 +840,10 @@ main[id] {
 
 .sobre__texto p {
   color: var(--tinta-70);
+  text-align: justify;
+  text-align-last: left;
+  hyphens: auto;
+  -webkit-hyphens: auto;
 }
 
 .sobre__lista {
