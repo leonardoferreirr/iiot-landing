@@ -650,56 +650,70 @@ main[id] {
   opacity: 0.1;
 }
 
-/* Figura e alvos dividem exatamente a mesma caixa, senao as coordenadas
-   percentuais dos pontos deixam de cair sobre o corpo. O recuo em % encolhe
-   os dois lados na mesma proporcao, entao a figura nao distorce, e a folga
-   impede que o arco do topo corte a cabeca.
-   Trocar por foto mantem os pontos no lugar. */
-.mapa__figura,
-.mapa__alvos {
+/* A figura ocupa a caixa inteira do palco com um recuo, e os pontos vao dentro
+   dela, nas coordenadas do viewBox. Nao existe mais uma segunda caixa para
+   desencontrar: em qualquer largura o ponto cai no mesmo lugar do desenho.
+   O recuo em % encolhe os dois eixos na mesma proporcao, entao a figura nao
+   distorce, e a folga impede que o arco do topo corte a cabeca. */
+.mapa__figura {
   position: absolute;
   inset: 7%;
-}
-
-.mapa__figura {
   width: auto;
   height: auto;
-  object-fit: contain;
+  max-width: none;
 }
 
-.mapa__alvos {
+/* Os pontos sao decorativos: quem clica sao os botoes com o nome da regiao. */
+#alvos {
   pointer-events: none;
 }
 
+/* r e stroke-width ficam em unidades do viewBox, entao o ponto cresce e encolhe
+   junto com o corpo.
+
+   A posicao mora no atributo transform do <g class="alvo"> e a animacao num <g>
+   interno DE PROPOSITO: no SVG o atributo transform e a propriedade transform do
+   CSS sao a mesma coisa, e o CSS ganha. Escalar o mesmo <g> apagava o translate
+   e jogava os oito pontos na origem do viewBox, fora da area visivel. */
 .alvo {
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  margin: -8px 0 0 -8px;
-  border-radius: 50%;
-  background: var(--verde);
-  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.9);
   opacity: 0.55;
-  transform: scale(0.8);
-  transition: opacity 0.35s, transform 0.4s var(--curva);
+  transition: opacity 0.35s;
 }
 
-.alvo::after {
-  content: "";
-  position: absolute;
-  inset: -4px;
-  border-radius: 50%;
-  border: 1.5px solid var(--verde);
+.alvo__corpo {
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scale(0.8);
+  transition: transform 0.4s var(--curva);
+}
+
+.alvo__anel {
+  fill: rgba(255, 255, 255, 0.9);
+}
+
+.alvo__nucleo {
+  fill: var(--verde);
+}
+
+.alvo__halo {
+  fill: none;
+  stroke: var(--verde);
+  stroke-width: 4;
+  transform-box: fill-box;
+  transform-origin: center;
   opacity: 0;
   transition: opacity 0.35s, transform 0.6s var(--curva);
 }
 
 .alvo.aceso {
   opacity: 1;
+}
+
+.alvo.aceso .alvo__corpo {
   transform: scale(1.15);
 }
 
-.alvo.aceso::after {
+.alvo.aceso .alvo__halo {
   opacity: 0.8;
   transform: scale(1.85);
 }
