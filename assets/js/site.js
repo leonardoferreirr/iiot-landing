@@ -88,9 +88,28 @@
   /* --- Fios entre cada nome e a regiao do corpo ------------------ */
   var NS = "http://www.w3.org/2000/svg";
 
+  /* A entrada por scroll segura nomes e figura 22px abaixo ate a secao
+     aparecer, e os fios sao medidos antes disso, quando a fonte carrega. Sem
+     descontar esse deslocamento, todo fio nascia e terminava 22px abaixo do
+     lugar certo, e ficava assim depois que tudo subia. A medida tira o
+     deslocamento da entrada: o fio aponta para onde o ponto vai PARAR, em
+     qualquer momento, inclusive no meio da animacao. */
+  function deslocamentoDeEntrada(el) {
+    var sobe = el.closest(".sobe");
+    if (!sobe || !window.DOMMatrixReadOnly) return { x: 0, y: 0 };
+    var t = window.getComputedStyle(sobe).transform;
+    if (!t || t === "none") return { x: 0, y: 0 };
+    var m = new DOMMatrixReadOnly(t);
+    return { x: m.m41, y: m.m42 };
+  }
+
   function centro(el, base) {
     var r = el.getBoundingClientRect();
-    return { x: r.left + r.width / 2 - base.left, y: r.top + r.height / 2 - base.top };
+    var d = deslocamentoDeEntrada(el);
+    return {
+      x: r.left + r.width / 2 - base.left - d.x,
+      y: r.top + r.height / 2 - base.top - d.y
+    };
   }
 
   function desenharFios() {

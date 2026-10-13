@@ -655,11 +655,17 @@ main[id] {
    desencontrar: em qualquer largura o ponto cai no mesmo lugar do desenho.
    O recuo em % encolhe os dois eixos na mesma proporcao, entao a figura nao
    distorce, e a folga impede que o arco do topo corte a cabeca. */
+/* Tamanho escrito por extenso, nunca `inset` com largura automatica. O Safari do
+   iPhone resolve `width:auto` de um <svg> posicionado como 100% do palco, nao
+   como a caixa entre os recuos: a figura saia maior, presa no canto, e o pe e a
+   crianca ficavam cortados. Chrome e o WebKit do Mac esticam certo, entao no
+   computador nunca aparecia. 86% e 100 menos os dois recuos de 7%. */
 .mapa__figura {
   position: absolute;
-  inset: 7%;
-  width: auto;
-  height: auto;
+  top: 7%;
+  left: 7%;
+  width: 86%;
+  height: 86%;
   max-width: none;
 }
 
