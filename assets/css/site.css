@@ -272,7 +272,7 @@ p {
 .nav {
   display: flex;
   gap: 1.9rem;
-  margin-left: auto;
+  margin-inline: auto;
 }
 
 .nav a {
